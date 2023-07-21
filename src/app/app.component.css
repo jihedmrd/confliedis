@@ -27,8 +27,6 @@ body {
 	font-size: 0.875em;
 	font-style: italic;
 }
-
-
 /* TABLES */
 .table {
     border-collapse: separate;
@@ -119,15 +117,6 @@ body {
 .table a.table-link.danger:hover {
 	color: #dd504c;
 }
-
-.table-products tbody > tr > td {
-	background: none;
-	border: none;
-	border-bottom: 1px solid #ebebeb;
-	-webkit-transition: background-color 0.15s ease-in-out 0s;
-	transition: background-color 0.15s ease-in-out 0s;
-	position: relative;
-}
 .table-products tbody > tr:hover > td {
 	text-decoration: none;
 	background-color: #f6f6f6;
@@ -170,19 +159,6 @@ body {
 .table tbody > tr.table-line-plus > td {
 	background-color: #eea59c;
 	color: #262525;
-}
-.table-stats .status-social-icon {
-	font-size: 1.9em;
-	vertical-align: bottom;
-}
-.table-stats .table-line-fb .status-social-icon {
-	color: #556484;
-}
-.table-stats .table-line-twitter .status-social-icon {
-	color: #5885b8;
-}
-.table-stats .table-line-plus .status-social-icon {
-	color: #a75d54;
 }
 .delete-button {
 	color: #fff;
