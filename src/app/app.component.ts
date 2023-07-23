@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public products: Product[];
+  public products: Product[] = [];
   public name: string;
   public editProduct: Product;
   public deleteProduct: Product;
@@ -80,35 +80,22 @@ export class AppComponent implements OnInit {
     }
   }
   
-  onDeleteProduct(product: Product) {
-    this.productService.deleteProduct(product.id).subscribe(
-      () => {
-        // Product was successfully deleted, so remove it from the products list.
-        this.products = this.products.filter((p) => p.id !== product.id);
-        // You can also display a success message here if needed.
+  public onDeleteProduct(id: number): void {
+    console.log("Deleting product with ID:", id);
+    this.productService.deleteProduct(id).subscribe(
+      (response: void) => {
+        console.log("Product deleted successfully.");
+        console.log(response);
+        this.getProducts();
       },
-      (error) => {
-        console.error('Error deleting product:', error);
-        // Handle error (e.g., display an error message).
+      (error: HttpErrorResponse) => {
+        console.error("Error deleting product:", error.message);
+        alert(error.message);
       }
     );
   }
 
-  public onConfirmDelete(): void {
-    if (this.deleteProduct) {
-      this.productService.deleteProduct(this.deleteProduct.id).subscribe(
-        (response: Product) => {
-          console.log('Product deleted successfully:', response);
-          this.getProducts(); // Refresh the product list after deletion
-          this.deleteProduct = null; // Reset the deleteProduct property after successful deletion
-        },
-        (error: HttpErrorResponse) => {
-          console.error('Error deleting product:', error.message);
-          alert('An error occurred while deleting the product.');
-        }
-      );
-    }
-  }
+ 
 
   public onOpenModal(product: Product, mode: string): void {
     const container = document.getElementById('main-container');
@@ -124,7 +111,8 @@ export class AppComponent implements OnInit {
       button.setAttribute('data-target', '#updateProductModal');
     }
     if (mode === 'delete') {
-      this.deleteProduct = product; 
+      this.deleteProduct = product;
+      console.log("Delete product:", this.deleteProduct);
       button.setAttribute('data-target', '#deleteProductModal');
     }
     container.appendChild(button);
