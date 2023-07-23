@@ -31,7 +31,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Iterate over products and create a table row for each product -->
                             <tr *ngFor="let Product of products">
                                 <td style="width: 20%;">
                                     <a href="#" class="user-link">{{Product?.name}}</a>
@@ -99,7 +98,6 @@
 			</div>
 			<div class="modal-footer">
 			  <button type="button" id="add-Product-form" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-			  <!-- Hidden button to close the modal -->
 			  <button type="button" id="add-product-form" class="btn btn-primary" style="display: none;" data-dismiss="modal"></button>
 			  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Sauvegarder les changements</button>
 			</div>
@@ -142,7 +140,7 @@
 		</div>
   </div>
  </div>
- 
+
 	<!-- Delete Modal -->
 <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -158,7 +156,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <!-- Ensure correct event binding to onDeleteProduct() method -->
         <button (click)="onDeleteProduct(deleteProduct?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
       </div>
     </div>
